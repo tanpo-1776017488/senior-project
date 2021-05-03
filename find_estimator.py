@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from skimage.exposure import rescale_intensity
 from face import load_face_dataset
+import load_celeba_data
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.model_selection import GridSearchCV
@@ -37,7 +38,7 @@ net = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the image dataset
 print("[INFO] loading dataset...")
-(faces, labels) = load_face_dataset(args["input"], net,minConfidence=0.5, minSamples=5)
+(faces, labels) =  load_face_dataset(args["input"], net,minConfidence=0.8, minSamples=5)
 print("[INFO] {} images in dataset".format(len(faces)))
 
 # flatten 2d data into 1D data
@@ -96,5 +97,5 @@ print(model.best_estimator_)
 print("[INFO] evaluating model...")
 predictions = model.predict(pca.transform(testX))
 print('{} prediction :'.format(args["classifier"]))
-print(classification_report(testY, predictions,target_names=le.classes_))
+print(classification_report(testY, predictions))
 
