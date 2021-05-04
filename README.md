@@ -1,5 +1,5 @@
 # 종합설계
-## Real-time mosaic based on face recognition 
+## Real-time mosaic system based on face recognition 
 ### Classifier selection
 > candidate : LDA, MLPC, SVM, KNN
 
