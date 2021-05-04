@@ -1,21 +1,26 @@
-# 종합설계
-## Real-time mosaic system based on face recognition 
-### Classifier selection
-> candidate : LDA, MLPC, SVM, KNN
+# Real-time mosaic system based on face recognition
+이 프로젝트는 종합설계과제로 어떤 어떤겁니다 간략소개
+## Classifier selection
+* LDA
+* MLPC
+* SVM
+* KNN
 
-### Feature extraction
-> * PCA(Principal Component Analysis)
-> * Embedding
+## Feature extraction
+* PCA(Principal Component Analysis)
+* Embedding
 
 
-## Dataset (from sklearn.datasets import fetch_lfw_people)
-* Experiment(using PCA)
+## Dataset
+```from sklearn.datasets import fetch_lfw_people```
+
+* Experiment (using PCA)
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance.png)
 ![Alt text](Fig/skleran_dataset_output/component_time_accuracy.jpeg)
 
 ## Future plans
-> * PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
-> * PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
+1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
+2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
 
 ## Reference
-[celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+* [celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
