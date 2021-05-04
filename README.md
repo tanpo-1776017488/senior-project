@@ -12,7 +12,7 @@
 
 
 ## Dataset
-> ```from sklearn.datasets import fetch_lfw_people```
+ ```from sklearn.datasets import fetch_lfw_people```
 > * Experiment (using PCA)
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance.png)
 ![Alt text](Fig/skleran_dataset_output/component_time_accuracy.jpeg)
