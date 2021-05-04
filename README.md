@@ -3,7 +3,7 @@
 ### Classifier selection
 > candidate : LDA, MLPC, SVM, KNN
 
-### feature extraction
+### Feature extraction
 > PCA(Principal Component Analysis), Embedding
 
 
