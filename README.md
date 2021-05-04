@@ -6,5 +6,5 @@
 
 ## Dataset (from sklearn.datasets import fetch_lfw_people)
 * Experiment
-![Alt text](Fig/component_changes_variance.png)
+![Alt text](./Fig/sklearn_dataset_output/component_changes_variance.png)
  
