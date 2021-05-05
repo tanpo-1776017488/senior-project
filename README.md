@@ -23,3 +23,4 @@
 
 ## Reference
 * [celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+* [Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)
