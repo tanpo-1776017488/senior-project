@@ -15,7 +15,7 @@
  ```from sklearn.datasets import fetch_lfw_people```
 > * Experiment (using PCA)
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance.png)
-![Alt text](Fig/skleran_dataset_output/component_time_accuracy.jpeg)
+![Alt text](Fig/skleran_dataset_output/component_changes_variance_mlpc_added.png)
 
 ## Future plans
 > 1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
