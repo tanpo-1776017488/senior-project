@@ -1,5 +1,6 @@
 # Real-time mosaic system based on face recognition
-이 프로젝트는 종합설계과제로 어떤 어떤겁니다 간략소개
+길거리에서 방송할 때 방송에 자신의 얼굴이 나오는지도 모르는채로 초상권 침해가 빈번히 이루어 지고 있음.         
+이 현상을 방지하고자 만든 시스템.
 ## Classifier selection
 > * LDA
 > * MLPC
