@@ -36,7 +36,7 @@ net = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the image dataset
 print("[INFO] loading dataset...")
-(faces, labels) = load_face_dataset(args["input"], net,minConfidence=0.5, minSamples=5)
+(faces, labels) = load_face_dataset(args["input"], net,minConfidence=0.8, minSamples=5)
 print("[INFO] {} images in dataset".format(len(faces)))
 
 # flatten 2d data into 1D data

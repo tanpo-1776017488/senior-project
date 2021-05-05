@@ -25,12 +25,14 @@ def EV(ran,acc,name):
     plt.title('dimension affect to accuracy({})'.format(name),fontsize=15)
     plt.xlabel('Number of Principle Components ')
     plt.ylabel('accuracy')
+    plt.grid()
 
 def time_EV(ran,acc,name):
     plt.plot(range(50,ran+1,50), acc)
     plt.title('dimension affect to time({})'.format(name),fontsize=15)
     plt.xlabel('Number of Principle Components ')
     plt.ylabel('time')
+    plt.grid()
 
 def EV_cor(n,x_train,x_test):
     pca=PCA(n_components=n,whiten=True)
@@ -75,9 +77,11 @@ if __name__=="__main__":
     knn_acc=[]
     lda_acc=[]
     svm_acc=[]
+    mlpc_acc=[]
     knn_t=[]
     lda_t=[]
     svm_t=[]
+    mlpc_t=[]
     for component in range(50,301,50):
         
         pca = PCA(n_components=component, whiten=True)
@@ -85,7 +89,7 @@ if __name__=="__main__":
         X_test = pca.transform(x_test)
         print('dimension : ',component)
         print('\nsvm : ')
-        svm_clf=svm.SVC(kernel="rbf",C=10,gamma=0.001,random_state=42)
+        svm_clf=svm.SVC(kernel="rbf",C=10,gamma='scale',random_state=42)
         before=time.time()
         classifier_test(svm_clf,X_test,X_train,y_test,y_train,'svm',svm_acc)
         after=time.time()
@@ -109,31 +113,39 @@ if __name__=="__main__":
         print('elapsed time : ',after-before)
         lda_t.append(after-before)
 
-        # print('\n MLPC : ')
-        # MLPC_clf = MLPClassifier(hidden_layer_sizes=(1024,), batch_size=256, verbose=True, early_stopping=True)
-        # before=time.time()
-        # classifier_test(MLPC_clf,X_test,X_train,y_test,y_train,'MLPC')
-        # after=time.time()
-        # print('elapsed time : ',after-before)
+        print('\n MLPC : ')
+        MLPC_clf = MLPClassifier(hidden_layer_sizes=(1024,), batch_size=256, verbose=True, early_stopping=True)
+        before=time.time()
+        classifier_test(MLPC_clf,X_test,X_train,y_test,y_train,'MLPC',mlpc_acc)
+        after=time.time()
+        print('elapsed time : ',after-before)
+        mlpc_t.append(after-before)
     plt.figure(figsize=(15,5))
-    plt.subplot(2,3,1)
+    plt.subplot(2,4,1)
     EV(300,svm_acc,'SVM')
 
-    plt.subplot(2,3,2)
+    plt.subplot(2,4,2)
     EV(300,knn_acc,'KNN')
 
-    plt.subplot(2,3,3)
+    plt.subplot(2,4,3)
     EV(300,lda_acc,'LDA')
 
-    plt.subplot(2,3,4)
+    plt.subplot(2,4,4)
+    EV(300,mlpc_acc,'MLPC')
+
+    plt.subplot(2,4,5)
     time_EV(300,svm_t,'SVM')
 
-    plt.subplot(2,3,5)
+    plt.subplot(2,4,6)
     time_EV(300,knn_t,'KNN')
 
-    plt.subplot(2,3,6)
+    plt.subplot(2,4,7)
     time_EV(300,lda_t,'LDA')
+
+    plt.subplot(2,4,8)
+    time_EV(300,mlpc_t,'MLPC')
     plt.tight_layout()
+    
     plt.show()
 
 
