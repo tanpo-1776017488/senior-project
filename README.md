@@ -19,6 +19,9 @@
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance_mlpc_added.png)
 
 
+```from sklearn.datasets import fetch_olivetti_faces``` ```number of classes: 40``` ```number of images : 400```
+> ![Alt text](Fig/skleran_dataset_output/oblite-dataset.png)
+
 ## Future plans
 > 1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
 > 2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
