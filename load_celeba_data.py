@@ -3,33 +3,6 @@ import numpy as np
 import path
 import os
 from imutils import paths
-# def load_data(inden,prefix_path):
-#     faces_name=[]
-#     label_name=[]
-#     if not os.path.isfile(inden):
-#         exit(-1)
-#     with open(inden,'r') as f:
-#         for line in f:
-#             name,labeled=line.split()
-#             faces_name.append(name)
-#             label_name.append(int(labeled))
-#             #print(name," ",labeled)
-#     faces=[]
-    
-#     for i in range(len(faces_name)):
-#         img_path=os.path.join(prefix_path,faces_name[i])
-#         img=cv2.imread(img_path)
-#         if img is None:
-#             print('fail to open ',faces_name[i])
-#             continue
-#         faces.append(img)
-#     faces=np.array(faces)
-#     label_name=np.array(label_name)
-#     return (faces,label_name)
-    
-
-    
-
 
 def load_data(inputPath,minSamples=5):
 	imagePaths = list(paths.list_images(inputPath))
