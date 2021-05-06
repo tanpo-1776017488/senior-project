@@ -13,10 +13,11 @@
 
 
 ## Dataset
- ```from sklearn.datasets import fetch_lfw_people```
+ ```from sklearn.datasets import fetch_lfw_people```     ```min_faces_per_person=50``` ```number of classes: 12``` ```number of images: 1560```
 > * Experiment (using PCA)
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance.png)
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance_mlpc_added.png)
+
 
 ## Future plans
 > 1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
