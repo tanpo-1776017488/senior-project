@@ -27,6 +27,6 @@
 > 2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
 
 ## Reference
-* [celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
-* [Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)
-* [Openface](https://cmusatyalab.github.io/openface/)
+[1][celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)           
+[2][Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)   
+[3][Openface](https://cmusatyalab.github.io/openface/)
