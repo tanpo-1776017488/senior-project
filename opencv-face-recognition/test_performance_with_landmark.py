@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import argparse
 import pickle
 import numpy as np
+import time
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--embeddings", required=True,help="path to serialized db of facial embeddings")
@@ -66,15 +67,22 @@ for clff in clf:
     # if clff!='mlpc':
     #     print('{} Best estimator found by grid search : '.format(clff))
     #     print(recognizer.best_estimator_)
+    before=time.time()
     score=recognizer.score(x_test,y_test)
+    results.append(time.time()-before)
     print('prediction : ',score)
     print('\n- - - - - - - - - - - - - - - - - - - - - - - - - -\n')
-    results.append(score)
+    
     xlabel.append(clff.upper())
 
-plt.bar(np.arange(4),results)
+#for accuracy
+# plt.bar(np.arange(4),results)
+# plt.xticks(np.arange(4),xlabel)
+# plt.title('PCA aligned face with Celeba (number of images : 10000)')
+# plt.show()
+
+#for predict time 
+plt.plot(np.arange(4),results)
 plt.xticks(np.arange(4),xlabel)
-plt.title('PCA aligned face with Celeba (number of images : 10000)')
+plt.title('Time to Inference')
 plt.show()
-
-
