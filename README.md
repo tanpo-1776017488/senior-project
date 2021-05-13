@@ -29,4 +29,5 @@
 ## Reference
 [1][celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)           
 [2][Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)   
-[3][Openface](https://cmusatyalab.github.io/openface/)
+[3][Openface](https://cmusatyalab.github.io/openface/)   
+[4][Embedding Guide](https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78#.ds8i8oic9)
