@@ -19,10 +19,16 @@
 ![Alt text](Fig/skleran_dataset_output/component_changes_variance_mlpc_added.png)
 
 
+```from sklearn.datasets import fetch_olivetti_faces``` ```number of classes: 40``` ```number of images : 400```
+> ![Alt text](Fig/skleran_dataset_output/oblite-dataset.png)
+
 ## Future plans
 > 1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
 > 2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
 
 ## Reference
-* [celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
-* [Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)
+[1][celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)           
+[2][Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)   
+[3][Openface](https://cmusatyalab.github.io/openface/)   
+[4][Embedding Guide](https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78#.ds8i8oic9)   
+[5][FaceNet](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Schroff_FaceNet_A_Unified_2015_CVPR_paper.pdf)
