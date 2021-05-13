@@ -21,10 +21,23 @@
 
 ```from sklearn.datasets import fetch_olivetti_faces``` ```number of classes: 40``` ```number of images : 400```
 > ![Alt text](Fig/skleran_dataset_output/oblite-dataset.png)
+  
+## Feature extraction comparison
+> * ### PCA vs Embedding
+> ```Dataset : Celeba``` ```number of images : 10000``` ```number of classes : 500```
+<img src="opencv-face-recognition/output/alignedFace_classifier_performance_10000_class_500.jpeg" width="400px" height="300px"/><img src="opencv-face-recognition/output/PCA_ALIGNED_FACE_WITH_CELEBA_10000_class_500.jpeg" width="400px" height="300px"/><br/>  
+
+## Embedding
+> * ### Aligned Face vs Without Aligned Face   
+> ```Dataset : Celeba``` ```number of images : 2000``` ```number of classes : 100```    
+> <img src="opencv-face-recognition/output/without_aligned_performance.jpeg" width="400px" height="300px"/><img src="opencv-face-recognition/output/alignedFace_classifier_performance.jpeg" width="400px" height="300px"/>
+
+
 
 ## Future plans
-> 1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.
-> 2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.
+> ~~1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.~~   
+> ~~2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.~~      
+
 
 ## Reference
 [1][celeba](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)           
