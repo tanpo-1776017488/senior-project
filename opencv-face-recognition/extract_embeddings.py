@@ -1,6 +1,6 @@
 # USAGE
 # python extract_embeddings.py --dataset dataset --embeddings output/embeddings.pickle --detector face_detection_model --embedding-model openface_nn4.small2.v1.t7
-
+# celeba dataset python extract_embeddings.py --dataset C:/Users/sorjt/Desktop/drive-download-20210429T145212Z-001/archive/img_align_celeba/img_align_celeba  --embeddings output/embeddings.pickle --detector face_detection_model --embedding-model openface_nn4.small2.v1.t7
 # import the necessary packages
 from imutils import paths
 import numpy as np
@@ -9,8 +9,7 @@ import imutils
 import pickle
 import cv2
 import os
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--dataset", required=True,
@@ -58,7 +57,6 @@ for (i, imagePath) in enumerate(imagePaths):
 	# maintaining the aspect ratio), and then grab the image
 	# dimensions
 	image = cv2.imread(imagePath)
-	image2=cv2.imread(imagePath,cv2.COLOR_BGR2GRAY)
 	image = imutils.resize(image, width=600)
 	(h, w) = image.shape[:2]
 
@@ -88,9 +86,6 @@ for (i, imagePath) in enumerate(imagePaths):
 
 			# extract the face ROI and grab the ROI dimensions
 			face = image[startY:endY, startX:endX]
-			face2= image2[startY:endY, startX:endX]
-
-			print(face.shape)
 			(fH, fW) = face.shape[:2]
 
 			# ensure the face width and height are sufficiently large
@@ -104,13 +99,10 @@ for (i, imagePath) in enumerate(imagePaths):
 			embedder.setInput(faceBlob)
 			vec = embedder.forward()
 
-			face2=cv2.resize(face2,dsize=(64,64),interpolation=cv2.INTER_AREA)
-			face2=face2.flatten()
 			# add the name of the person + corresponding face
 			# embedding to their respective lists
 			knownNames.append(name)
-			knownEmbeddings.append(face2)
-			print(face2)
+			knownEmbeddings.append(vec.flatten())
 			total += 1
 
 # dump the facial embeddings + names to disk

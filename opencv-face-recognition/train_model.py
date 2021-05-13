@@ -7,8 +7,7 @@ from sklearn.svm import SVC
 from sklearn import neighbors
 import argparse
 import pickle
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--embeddings", required=True,
@@ -28,14 +27,11 @@ print("[INFO] encoding labels...")
 le = LabelEncoder()
 labels = le.fit_transform(data["names"])
 
-scaler=StandardScaler()
-pca=PCA(n_components=100,whiten=True)
-data["embeddings"]=scaler.fit_transform(data["embeddings"])
-data["embeddings"]=pca.fit_transform(data["embeddings"])
-print(data["embeddings"])
+# train the model used to accept the 128-d embeddings of the face and
+# then produce the actual face recognition
 print("[INFO] training model...")
 recognizer = SVC(gamma='scale', probability=True)
-#recognizer=neighbors.KNeighborsClassifier(n_neighbors=2, algorithm='ball_tree', weights='distance')
+#recognizer=neighbors.KNeighborsClassifier(n_neighbors=3, algorithm='ball_tree', weights='distance')
 recognizer.fit(data["embeddings"], labels)
 
 # write the actual face recognition model to disk

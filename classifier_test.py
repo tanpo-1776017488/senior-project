@@ -49,8 +49,8 @@ def EV_cor(n,x_train,x_test):
 
 if __name__=="__main__":
     #prepare data
-    data=fetch_lfw_people(min_faces_per_person=50)
-    #data=fetch_olivetti_faces()
+    #data=fetch_lfw_people(min_faces_per_person=50)
+    data=fetch_olivetti_faces()
     ss=MinMaxScaler()
     inputs=data.data
     target=data.target

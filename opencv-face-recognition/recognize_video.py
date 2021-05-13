@@ -50,21 +50,17 @@ time.sleep(2.0)
 
 # start the FPS throughput estimator
 fps = FPS().start()
-scaler=StandardScaler()
-pca=PCA(n_components=1,whiten=True)
+
 # loop over frames from the video file stream
 prev=0
 while True:
 	# grab the frame from the threaded video stream
 
 	frame = vs.read()
-	
-
 	# resize the frame to have a width of 600 pixels (while
 	# maintaining the aspect ratio), and then grab the image
 	# dimensions
 	frame = imutils.resize(frame, width=600)
-	frame2=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 	(h, w) = frame.shape[:2]
 
 	# construct a blob from the image
@@ -90,7 +86,7 @@ while True:
 
 			# extract the face ROI
 			face = frame[startY:endY, startX:endX]
-			face2=frame2[startY:endY, startX:endX]
+			
 			(fH, fW) = face.shape[:2]
 
 			# ensure the face width and height are sufficiently large
@@ -103,14 +99,8 @@ while True:
 			faceBlob = cv2.dnn.blobFromImage(face, 1.0 / 255,(96, 96), (0, 0, 0), swapRB=True, crop=False)
 			embedder.setInput(faceBlob)
 			vec = embedder.forward()
-			face2=cv2.resize(face2,dsize=(64,64),interpolation=cv2.INTER_AREA)
-			face2=face2.flatten()
-			face2=face.reshape(-1,1)
-			face2=scaler.fit_transform(face2)
-			print(face2)
-			face2=pca.fit_transform(face2)
 			# perform classification to recognize the face
-			preds = recognizer.predict_proba(face2.flatten())[0]
+			preds = recognizer.predict_proba(vec)[0]
 			j = np.argmax(preds)
 			proba = preds[j]
 			name = le.classes_[j]
