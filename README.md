@@ -25,7 +25,7 @@
 ## Feature extraction comparison
 > * ### PCA vs Embedding
 > ```Dataset : Celeba``` ```number of images : 10000``` ```number of classes : 500```
-<img src="opencv-face-recognition/output/alignedFace_classifier_performance_10000_class_500.jpeg" width="450px" height="300px"/><img src="opencv-face-recognition/output/PCA_ALIGNED_FACE_WITH_CELEBA_10000_class_500.jpeg" width="450px" height="300px"/><br/>  
+<img src="opencv-face-recognition/output/alignedFace_classifier_performance_10000_class_500.jpeg" width="400px" height="300px"/><img src="opencv-face-recognition/output/PCA_ALIGNED_FACE_WITH_CELEBA_10000_class_500.jpeg" width="400px" height="300px"/><br/>  
 
 ## Embedding
 > * ### Aligned Face vs Without Aligned Face   
