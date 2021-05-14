@@ -46,7 +46,7 @@
 ## Future plans
 > ~~1. PCA + Classifier 조합을 celeba dataset으로 테스트 후 classifier결정.~~   
 > ~~2. PCA + Classifier 조합과 Embedding + Classifier 조합 성능비교.~~      
-> 3. 메모리에 올릴수 있는 Celeba dataset의상한을 구하고 그 데이터로 각 모델별로 GridSearchCV를 사용하여 적절한 parameter값을 구하고 다시 비교.   
+> 3. 메모리에 올릴수 있는 Celeba dataset의 상한을 구하고 그 데이터로 각 모델별로 GridSearchCV를 사용하여 적절한 parameter값을 구하고 다시 비교.   
 > 4. 정확도와 속도는 trade-off관계이기 때문에 3번의 결과로 적절히 타협을 봐야함.
 
 
