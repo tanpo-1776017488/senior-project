@@ -31,6 +31,9 @@
 > * ### Aligned Face vs Without Aligned Face   
 > ```Dataset : Celeba``` ```number of images : 2000``` ```number of classes : 100```    
 > <img src="opencv-face-recognition/output/without_aligned_performance.jpeg" width="400px" height="300px"/><img src="opencv-face-recognition/output/alignedFace_classifier_performance.jpeg" width="400px" height="300px"/>
+> * ### Time to Inference
+> <img src="opencv-face-recognition/output/time_to_inference.jpeg" width="400px" height="300px"/>
+
 
 
 
