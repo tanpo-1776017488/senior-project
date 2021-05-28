@@ -197,7 +197,7 @@ class face_learner(object):
         self.model.train()
         running_loss = 0. 
         start=self.epoch                   
-        for e in range(epochs):
+        for e in range(start,epochs):
             print('epoch {} started'.format(e))
             if e == self.milestones[0]:
                 self.schedule_lr()
@@ -235,6 +235,7 @@ class face_learner(object):
                     self.save_state(conf, accuracy)
                     
                 self.step += 1
+            self.epoch=e+1
                 
         self.save_state(conf, accuracy, to_save_folder=True, extra='final')
 
