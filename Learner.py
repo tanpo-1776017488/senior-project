@@ -65,6 +65,7 @@ class face_learner(object):
             save_path = conf.save_path
         else:
             save_path = conf.model_path
+        save_path=Path('/content/drive/MyDrive/Insight_face/save')
         torch.save(
             {
                 'model_state_dict':self.model.state_dict(),
