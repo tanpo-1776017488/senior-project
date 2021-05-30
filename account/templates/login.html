@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form method='post' action="{% url 'login'%}">
+{% csrf_token %}
+{% include 'form_errors.html' %}
+{{form.as_p}}
+<input type='submit' value='Submit'>
+<br>
+<p><a href="{% url 'sign_up' %}">Sign Up</a> here</p>
+</form>
+{% endblock %}
