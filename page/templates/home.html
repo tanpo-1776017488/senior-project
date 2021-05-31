@@ -8,83 +8,50 @@
     <div class="banner-news">
         <div class="container-fluid p-0">
             <div class="banner-slider-active no-gutters ">
+                <!-- 현재 방송중인 bj들의 리스트를 슬라이드 형식으로 제공 -->
+                {% if video_info %}
+                    {% for video in video_info %}
+                        <div class="single-sliders">
+                            <div class="single-baner-nw mb-30 text-center">
+                                <div class="banner-img-cap">
+                                    <div class="banner-img">
+                                        <!-- video송출 page구현하고 링크 걸기 -->
+                                        <a href="{% url 'streaming:streaming' video.user.username %}"><img src="{{video.user.img.url}}" alt=""></a>
+                                        <!--video iocn -->
+                                        <div class="video-icon">
+                                            <!-- 방송중인 page로 이동 -->
+                                            <a class="popup-video btn-icon" href="{% url 'streaming:streaming' video.user.username %}" data-animation="bounceIn" data-delay=".4s"><i class="fas fa-play"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="banner-cap">
+                                        <p>{{video.title}}</p>
+                                        <h3><a href="{% url 'account:profile' video.user.username %}">{{video.user.nickname}}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
                 <div class="single-sliders">
                     <div class="single-baner-nw mb-30 text-center">
                         <div class="banner-img-cap">
                             <div class="banner-img">
-                                <a href="https://www.youtube.com/watch?v=1FCIpRMyBJI"><img src="{% static 'assets/img/gallery/banner-cap1.png'%}" alt=""></a>
+                                <!-- video송출 page구현하고 링크 걸기 -->
+                                <a href="{% url 'home' %}"><img src="{% static 'assets/img/gallery/video_img2.png'%}" alt=""/></a>
                                 <!--video iocn -->
                                 <div class="video-icon">
-                                    <a class="popup-video btn-icon" href="{% static 'https://www.youtube.com/watch?v=1FCIpRMyBJI'%}" data-animation="bounceIn" data-delay=".4s"><i class="fas fa-play"></i></a>
+                                    <!-- 방송중인 page로 이동 -->
+                                    <a class="popup-video btn-icon" href="{%url 'home' %}" data-animation="bounceIn" data-delay=".4s"><i class="fas fa-play"></i></a>
                                 </div>
                             </div>
                             <div class="banner-cap">
-                                <p>크리스마스에는 역시 랄튜브</p>
-                                <h3><a href="post_details.html">랄로</a></h3>
+                                <p>준비중입니다.</p>
+                                <h3><a href="{% url 'home' %}">죄송합니다</a></h3>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-sliders">
-                    <div class="single-baner-nw mb-30 text-center">
-                        <div class="banner-img-cap">
-                            <div class="banner-img">
-                                <img src="{% static 'assets/img/gallery/banner-cap2.png'%}" alt="">
-                            </div>
-                            <div class="banner-cap">
-                                <p>갑자기 정자로 변했습니다</p>
-                               <h3><a href="post_details.html">트위치  www.twitch.tv/aba4647</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-sliders">
-                    <div class="single-baner-nw mb-30 text-center">
-                        <div class="banner-img-cap">
-                            <div class="banner-img">
-                                <img src="{% static 'assets/img/gallery/banner-cap3.png'%}" alt="">
-                                <!--video iocn -->
-                                <div class="video-icon">
-                                    <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0" data-animation="bounceIn" data-delay=".4s"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="banner-cap">
-                                <p>4억잃은 종말론자</p>
-                                <h3><a href="#">방금 5천만원을 더 잃었읍니다</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-sliders">
-                    <div class="single-baner-nw mb-30 text-center">
-                        <div class="banner-img-cap">
-                            <div class="banner-img">
-                                <img src="{% static 'assets/img/gallery/banner-cap4.png'%}" alt="">
-                            </div>
-                            <div class="banner-cap">
-                                <p>건강검진 매드무비</p>
-                                <h3><a href="#">랄로</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-sliders">
-                    <div class="single-baner-nw mb-30 text-center">
-                        <div class="banner-img-cap">
-                            <div class="banner-img">
-                                <img src="{% static 'assets/img/gallery/banner-cap2.png'%}" alt="">
-                                <!--video iocn -->
-                                <div class="video-icon">
-                                    <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0" data-animation="bounceIn" data-delay=".4s"><i class="fas fa-play"></i></a>
-                                </div>
-                            </div>
-                            <div class="banner-cap">
-                                <p>갑자기 정자로 변했습니다</p>
-                                <h3><a href="#">랄로</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div>                       
+                {% endif %}
             </div>
         </div>
     </div>

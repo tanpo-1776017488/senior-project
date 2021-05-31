@@ -11,19 +11,14 @@ def sign_up(request):
     # GET인 경우 return sin-up.html
     if request.method=="POST":
         form=UserForm(request.POST,request.FILES)
-        #print(form)
+        
         if form.is_valid():
-            print('not entered')
-            #tmp_user=form.save(commit=False)
             form.save()
-            #print(request.FILES['img'])
-            #tmp_user.img=request.FILES['img']
-            #tmp_user.save()
-            #tmp_user.img=
             username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password1')
             user=authenticate(username=username,password=password)
             auth_login(request,user)
+        
         return redirect('home')
     
     else :
@@ -33,5 +28,7 @@ def sign_up(request):
 def profile(request,username):
     user=get_object_or_404(get_user_model(),pk=username)
     return render(request,'profile.html',{'Cuser':user})
+
+
 
     

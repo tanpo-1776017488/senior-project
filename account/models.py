@@ -9,11 +9,11 @@ from django.utils import timezone
 
 # tables
 class CustomUser(AbstractUser):
-    name=models.CharField(max_length=10)
-    #location=models.CharField(max_length=10)
+    name=models.CharField(max_length=10,default='admin')
     username=models.CharField(max_length=15,primary_key=True)
     img=models.ImageField(blank=True,null=True,upload_to='account/',default='default.png')
     pub_date=models.DateTimeField(default=timezone.now,editable=False,blank=True,null=True)
+    nickname=models.CharField(max_length=20,blank=True,null=True,unique=True)
 
 
 class profile(models.Model):
@@ -24,6 +24,10 @@ class video(models.Model):
     user=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     like=models.IntegerField(blank=True,default=0)
     bad=models.IntegerField(blank=True,default=0)
+    streaming=models.BooleanField(blank=True,null=True,default=False)
+    title=models.CharField(max_length=20,blank=True,null=True)
+    create=models.DateTimeField(editable=True,blank=True,null=True)
+    views=models.IntegerField(default=0,blank=True)
     
 class total(models.Model):
     user=models.OneToOneField(CustomUser,on_delete=models.CASCADE)

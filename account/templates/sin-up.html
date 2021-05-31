@@ -2,13 +2,66 @@
 
 {% block content %}
 {% load static %}
-
-<h1>회원가입</h1>
-<form method="post" action="{% url 'sign_up' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% include "form_errors.html" %}
-    {{form.as_p}}
-    <input type='submit' value='Submit'>
-</form>
+<main>
+    <!-- breadcrumb Start-->
+    
+    <div class="page-notification">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'account:sign_up'%}">Sign Up</a></li> 
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+    <!-- Register Area Start -->
+    <div class="register-form-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8">
+                    <div class="register-form text-center">
+                        <!-- Login Heading -->
+                        <div class="register-heading">
+                            <span>Sign Up</span>
+                            <p>Create your account to get full access</p>
+                        </div>
+                        <!-- Single Input Fields -->
+                        <form method="post" action="{% url 'account:sign_up' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include "form_errors.html" %}
+                            {{form.non_field_errors}}
+                            {% for hidden_field in form.hidden_field %}
+                                {{hidden_field.errors}}
+                                {{hidden_field}}
+                            {% endfor %}
+                            <div class="input-box">
+                                {% for field in form.visible_fields %}
+                                <div class="single-input-fields">
+                                    {{field.label_tag}}
+                                    {{field.errors}}
+                                    {{field}}
+                                </div>
+                                {% endfor %}
+                            </div>
+                           <!-- form Footer -->
+                            <div class="register-footer">
+                                <p> Already have an account? <a href="{% url 'account:login' %}"> Login</a> here</p>
+                                <button class="submit-btn3" type="submit">Submit</button>
+                            </form> 
+                            <!-- end form tag -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Area End -->
+</main>
 
 {% endblock %}

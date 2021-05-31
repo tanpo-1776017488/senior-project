@@ -1,12 +1,116 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<form method='post' action="{% url 'login'%}">
-{% csrf_token %}
-{% include 'form_errors.html' %}
-{{form.as_p}}
-<input type='submit' value='Submit'>
-<br>
-<p><a href="{% url 'sign_up' %}">Sign Up</a> here</p>
-</form>
+<main>
+    {% include 'form_errors.html' %}
+    <!-- breadcrumb Start-->
+    <div class="page-notification">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'account:login' %}">Login</a></li> 
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+    <!-- login Area Start -->
+    <div class="login-form-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8">
+                    <div class="login-form">
+                        <!-- Login Heading -->
+                        <div class="login-heading">
+                            <span>Login</span>
+                            <p>Enter Login details to get access</p>
+                        </div>
+                        <!-- Single Input Fields -->
+                    <form action="{% url 'account:login'%}" method='post'>
+                        {% csrf_token %}
+                        {% include 'form_errors.html' %}
+                        <div class="input-box">
+                            <div class="single-input-fields">
+                                <label for='username'>ID</label>
+                                <input type="text" name='username' id='username' placeholder="ID" value="{{ form.username.value|default_if_none:'' }}">
+                            </div>
+                            <div class="single-input-fields">
+                                <label>Password</label>
+                                <input type="password" name='password' id='password' placeholder="Enter Password" value="{{form.password.value|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <!-- form Footer -->
+                        <div class="login-footer">
+                            <p>Don’t have an account? <a href="{% url 'account:sign_up' %}">Sign Up</a>  here</p>
+                            <button class="submit-btn3" type='submit'>Login</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login Area End -->
+</main>
+
+<footer>
+    <!-- Footer Start-->
+    <div class="footer-area footer-padding">
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top d-none d-lg-block">
+                   <div class="container">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <!-- Social -->
+                                    <div class="header-social">
+                                        <a href="https://twitter.com/home?lang=ko"><i class="fab fa-twitter"></i></a>
+                                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://ko-kr.facebook.com/"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                                <div class="header-info-mid">
+                                    <!-- logo -->
+                                    <div class="logo">
+                                        <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/logo.png'%}" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="header-info-right d-flex align-items-center">
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom header-bottom2 ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                            </div> 
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+    </div>
+    <!-- footer-bottom area -->
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="footer-border">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="footer-copy-right text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>
 {% endblock %}

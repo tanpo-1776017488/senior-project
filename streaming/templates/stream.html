@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <img src="{% url 'streaming:video' streamer.username %}" width="100%">
+        </div>
+    </div>
+</div>
+<div>
+    <h3>nickname : {{streamer.nickname}}</h3>
+    <h3>title    : {{streamer.title}}</h3>
+    <h3>방송 시작 : {{streamer.video.create}}</h3>
+    <h3>방송중    : {{streamer.video.streaming}}</h3>
+</div>
+{% if user.is_authenticated and watcher.username == streamer.username %}
+<a href="{%url 'streaming:end' streamer.username %}" style="color: black;">방송종료</a>
+{% endif %}
+<p>views: {{streamer.video.views}}</p>
+
+<div>
+    <input type="button" name="{{streamer.username}}" value='Like' style="margin-top: 7px;">
+    <p id='count-{{streamer.username}}' style="font:bold 1em; margin-top: 3px">좋아요&nbsp;{{streamer.video.like}}개</p>
+    <!-- 현재 like 가 있는 video table과 user table은 one to one 관계임 -->
+</div>
+<!-- 어떻게 접속이 이루어 지는지 테스트용 나중에 지우기 -->
+<p>{{user.username}}</p>
+<p>{{streamer.username}}</p>
+
+
+{% endblock %}
