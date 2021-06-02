@@ -11,5 +11,4 @@ urlpatterns = [
     path('sign_up/',sign_up,name='sign_up'),
     path('logout/',auth_views.LogoutView.as_view(),name='logout'),
     path('profile/<str:username>',profile,name='profile'),
-   
 ]

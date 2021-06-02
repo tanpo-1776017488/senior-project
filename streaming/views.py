@@ -3,12 +3,16 @@ from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth import authenticate, get_user_model,logout,login as auth_login
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 import time
+import json #json 형태로 리턴
 import cv2
 from django.views.decorators import gzip
+from django.views.decorators.http import require_POST #post request만 받음
 import threading
 from django.http import HttpResponse,StreamingHttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from .models import Videoo
+
 # Create your views here.
 id=0
 stream_list=[]
@@ -117,5 +121,19 @@ def end_broadcast(request,username):
     id-=1
     print('id after give it back : ',id)
     return redirect('home')
-            
 
+#좋아요 
+def video_like(request):
+    pk=request.POST.get('pk',None)
+    video=get_object_or_404(Videoo,pk=pk)
+    user = request.user
+
+    # if video.like.filter(id=user.id).exists():
+    #     video.like.remove(user)
+    #     message = '좋아요 취소'
+    # else:
+    #     video.like.add(user)
+    #     message = '좋아요'
+
+    context = {'likes_count':video.count_likes(), 'message': message}
+    return HttpResponse(json.dumps(context), content_type="application/json")

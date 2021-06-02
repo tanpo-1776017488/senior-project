@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
-        <p>img : <img src="{{Cuser.img.url}}" width="100px" height="100px"> </p>
-         
-    <div>
-        User ID     : {{Cuser.username}}
-        <br>
-        create date : {{Cuser.pub_date}}     
-        <br>
-        views : {{Cuser.total.total_views}}  like:{{Cuser.total.total_like}} bad: {{Cuser.total.total_bad}}
-        subscriber: {{Cuser.profile.sub}}
-    </div>
-    <div>
+    <div style="margin:100px 200px 10px 200px">
+        <p><img src="{{Cuser.img.url}}" width="200px" height="200px"> 
+            <b style="font-size:40px; padding:50px 50px 50px 50px">
+                {{Cuser.username}}
+            </b>
+            구독자 {{Cuser.profile.sub}}
+        </p>
+    
+       <div style="font-size:17px">
+       <hr>
+           조회수 {{Cuser.total.total_views}} &nbsp;&nbsp;&nbsp;&nbsp;
+           좋아요 {{Cuser.total.total_like}} &nbsp;&nbsp;&nbsp;&nbsp;
+           싫어요 {{Cuser.total.total_bad}} 
+           <div align="right" style="padding:50px">
+           <br style="font-family:Nanum Gothic;">
+              계정 생성일 &nbsp;&nbsp;&nbsp;&nbsp;{{Cuser.pub_date}}     
+           <br>
+           </div>
+       </div>
+       {% comment %} <div>
         <a href="" style="color:black">수정하기</a>
+       </div> {% endcomment %}
     </div>
-
 {% endblock %}

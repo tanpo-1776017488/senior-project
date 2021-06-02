@@ -69,11 +69,13 @@
                                        <li><a href="{% url 'account:login' %}">Log In</a></li>
                                        <li><a href="{% url 'account:sign_up'%}">Sign up</a></li>
                                        {% else %}
-                                       <li>{{user.username}} </li>
+                                       <!--아이디 옆에 이미지 삽입, 사이 공백-->
+                                       <li><img src="{{Cuser.img.url}}" width="30px" height="30px"> </li>
+                                       <li>{{user.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
                                        <li><a href="{% url 'account:logout' %}">Logout</a></li>
                                        <li><a href="{% url 'account:profile' user.username %}">detail</a></li>
                                        <!-- 버튼디자인 받으면 바꾸기 -->
-                                       <li><a href="{% url 'streaming:streaming' user.username %}">방송하기</a></li>
+                                       <li><button id="방송하기" style="color: #fff; background:#C8FE2E; font-size:1em; border-radius:1.5em; padding:1px 3px;"><a href="{% url 'streaming:streaming' user.username %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;방송하기</a></button></li>
                                        {% endif %}
                                        
                                    </ul>
