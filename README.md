@@ -1,5 +1,4 @@
-# InsightFace_Pytorch
-
+# InsightFace_Pytorch (Modified by Jayheon)
 Pytorch0.4.1 codes for InsightFace
 
 ------
