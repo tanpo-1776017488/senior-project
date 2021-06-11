@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mango TV</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Preloader Start-->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top ">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-lg-between align-items-center">
+                                <div class="header-info-left">
+                                    <li class="d-none d-lg-block">
+                                        <div class="form-box f-right ">
+                                            <input type="text" name="Search" placeholder="Search your interest...">
+                                            <div class="search-icon">
+                                                <i class="ti-search"></i>
+                                            </div>
+                                        </div>
+                                     </li>
+                                </div>
+                                <div class="header-info-mid">
+                                    <!-- logo -->
+                                    <div class="logo">
+                                        <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="header-info-right d-flex align-items-center">
+                                   <ul>
+                                       {% if not user.is_authenticated %}                                          
+                                       <li><a href="{% url 'account:login' %}">Log In</a></li>
+                                       <li><a href="{% url 'account:sign_up'%}">Sign up</a></li>
+                                       {% else %}
+                                       <!--아이디 옆에 이미지 삽입, 사이 공백-->
+                                       <li><img src="{{user.img.url}}" width="30px" height="30px"> </li>
+                                       <li>{{user.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+                                       <li><a href="{% url 'account:logout' %}">Logout</a></li>
+                                       <li><a href="{% url 'account:profile' user.username %}">detail</a></li>
+                                       <!-- 버튼디자인 받으면 바꾸기 -->
+                                       <li><button id="방송하기" style="color: #fff; background:#C8FE2E; font-size:1em; border-radius:1.5em; padding:1px 3px;"><a href="{% url 'streaming:streaming' user.username %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;방송하기</a></button></li>
+                                       {% endif %}
+                                       
+                                   </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <!-- logo 2 -->
+                                <div class="logo2">
+                                    <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+                                <!-- logo 3 -->
+                                <div class="logo3 d-block d-sm-none">
+                                    <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/logo-mobile.png' %}" alt=""></a>
+                                </div>
+                            </div> 
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static './assets/js/popper.min.js' %}"></script>
+    <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static './assets/js/slick.min.js' %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static './assets/js/wow.min.js' %}"></script>
+    <script src="{% static './assets/js/animated.headline.js' %}"></script>
+    <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+    <!-- Date Picker -->
+    <script src="{% static './assets/js/gijgo.min.js' %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+    <!-- Progress -->
+    <script src="{% static './assets/js/jquery.barfiller.js' %}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static './assets/js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static './assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static './assets/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static './assets/js/hover-direction-snake.min.js'%}"></script>
+
+    <!-- contact js -->
+    <script src="{% static './assets/js/contact.js'%}"></script>
+    <script src="{% static './assets/js/jquery.form.js'%}"></script>
+    <script src="{% static './assets/js/jquery.validate.min.js '%}"></script>
+    <script src="{% static './assets/js/mail-script.js'%}"></script>
+    <script src="{% static './assets/js/jquery.ajaxchimp.min.js'%}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static './assets/js/plugins.js'%}"></script>
+    <script src="{% static './assets/js/main.js'%}"></script>
+    
+    
+    
+   
+    
+</body>
+</html>

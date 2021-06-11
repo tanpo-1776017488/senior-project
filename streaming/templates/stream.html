@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div style="margin:1px 50px 1px 50px;">
+    <div class="container" style="background-color:#F2F2F2">
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2"style="padding:10px;">
+                <b style="font-size:25px">{{streamer.nickname}}</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if streamer.video.title is None %}
+                <h3>TITLE : {{streamer.nickname}}</h3> 
+                {% else %}
+                <h3>TITLE : {{streamer.video.title}}</h3>
+                {% endif %}
+                <img src="{% url 'streaming:video' streamer.username %}" width="100%">
+            </div>
+        </div>
+    </div>
+    <div  style="margin:1px 200px 50px 200px;font-size:17px;">
+        <div style="font:bold 1em; margin-top: 3px">
+        조회수 {{streamer.video.views}} &nbsp;&nbsp;&nbsp;&nbsp;
+        <span id='count-{{streamer.username}}' value=''>좋아요&nbsp;{{streamer.video.like}}개</span>
+        <input type="button" class="btn btn-info btn-sm like" name="{{streamer.username}}" value='Like' style=" float: right;width:50pt;height:25pt; font:bold 3em;font-size:15px;">
+        <span id='count_bad-{{streamer.username}}' value=''>싫어요&nbsp;{{streamer.video.bad}}개</span>
+        <input type="button" class="btn btn-info btn-sm bad" name="{{streamer.username}}" value='Bad' style=" float: right;width:50pt;height:25pt; font:bold 3em;font-size:15px;">
+        <!-- 현재 like 가 있는 video table과 user table은 one to one 관계임 -->
+        </div>
+        <br>
+        <hr>
+        <p><h3>방송 시작 시간&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{streamer.video.create}}</h3>
+        <h3>방송중</h3>
+        </p>
+        <br><br>
+        <div align="center">
+        {% if user.is_authenticated and watcher.username == streamer.username %}
+        <a href="{%url 'streaming:end' streamer.username %}" style="color: white;background-color: gray">방송종료</a>
+        <form method="post" action="{% url 'streaming:face' streamer.username%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name='imgs' multiple>
+            <input type="submit" value='upload'>
+        </form>
+        {% endif %}
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(".like").click(function () { // .like 버튼을 클릭 감지
+        var pk = $(this).attr('name')
+        $.ajax({ // ajax로 서버와 통신
+            type: "POST", // 데이터를 전송하는 방법
+            url: "{% url 'streaming:video_like' streamer.username %}", // 통신할 url을 지정
+            data: { 'pk':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}' }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
+            dataType: "json",
+            success: function (response) { // 성공
+                $("#count-" + pk).html("좋아요&nbsp;" + response.likes_count + "개"); // 좋아요 개수 변경
+            },
+         
+        });
+    })
+    $(".bad").click(function () { // .like 버튼을 클릭 감지
+        var pk = $(this).attr('name')
+        $.ajax({ // ajax로 서버와 통신
+            type: "POST", // 데이터를 전송하는 방법
+            url: "{% url 'streaming:video_bad' streamer.username %}", // 통신할 url을 지정
+            data: { 'pk':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}' }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
+            dataType: "json",
+            success: function (response) { // 성공
+                $("#count_bad-" + pk).html("싫어요&nbsp;" + response.bad_count + "개"); // 좋아요 개수 변경
+            },
+           
+        });
+    })
+</script>
+
+{% endblock %}
