@@ -20,6 +20,9 @@
 ## Sequence diagram
 <img src='results/sequnce.png' width='600px' height='400px'/>
 
+## Database
+<img src='results/table.png' width='600px' height='400px'>
+
 ## Train log
 * ### train dataset : MS1M-ArcFace(85K ids/5.8M images) 
 * ### Model         : MobileFaceNet
